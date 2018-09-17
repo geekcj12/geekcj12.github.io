@@ -21,17 +21,17 @@
     
     
     <meta name="keywords" content="">
-    <meta name="description" content="@card{ 用来记录些日常琐事和学习笔记，顺便玩玩Hexo，万一以后没钱买服务器了呢。本站托管于GitHub，由于不想被收录，所以就没设置域名。 QQ音乐歌单 			 				console.error(&quot;ReferenceError: value is not defined&quot;); 			 网易云音乐歌单 			 				console.error(&quot;ReferenceError: value">
+    <meta name="description" content="@card{ 用来记录些日常琐事和学习笔记，顺便玩玩Hexo，万一以后没钱买服务器了呢。本站托管于GitHub，由于不想被收录，所以就没设置域名。 QQ音乐歌单      网易云音乐歌单      }">
 <meta property="og:type" content="website">
 <meta property="og:title" content="关于">
 <meta property="og:url" content="https://geekcj12.github.io/about/index.html">
 <meta property="og:site_name" content="笔记">
-<meta property="og:description" content="@card{ 用来记录些日常琐事和学习笔记，顺便玩玩Hexo，万一以后没钱买服务器了呢。本站托管于GitHub，由于不想被收录，所以就没设置域名。 QQ音乐歌单 			 				console.error(&quot;ReferenceError: value is not defined&quot;); 			 网易云音乐歌单 			 				console.error(&quot;ReferenceError: value">
+<meta property="og:description" content="@card{ 用来记录些日常琐事和学习笔记，顺便玩玩Hexo，万一以后没钱买服务器了呢。本站托管于GitHub，由于不想被收录，所以就没设置域名。 QQ音乐歌单      网易云音乐歌单      }">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-09-16T14:38:56.756Z">
+<meta property="og:updated_time" content="2018-09-17T07:10:30.141Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于">
-<meta name="twitter:description" content="@card{ 用来记录些日常琐事和学习笔记，顺便玩玩Hexo，万一以后没钱买服务器了呢。本站托管于GitHub，由于不想被收录，所以就没设置域名。 QQ音乐歌单 			 				console.error(&quot;ReferenceError: value is not defined&quot;); 			 网易云音乐歌单 			 				console.error(&quot;ReferenceError: value">
+<meta name="twitter:description" content="@card{ 用来记录些日常琐事和学习笔记，顺便玩玩Hexo，万一以后没钱买服务器了呢。本站托管于GitHub，由于不想被收录，所以就没设置域名。 QQ音乐歌单      网易云音乐歌单      }">
     
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
@@ -40,6 +40,9 @@
     <!-- custom head -->
     
 
+<link rel="stylesheet" href="\assets\css\APlayer.min.css" class="aplayer-style-marker">
+<script src="\assets\js\APlayer.min.js" class="aplayer-script-marker"></script>
+<script src="\assets\js\Meting.min.js" class="meting-script-marker"></script>
 </head>
 
 <body>
@@ -178,13 +181,9 @@
             <div class="card">
 <p>用来记录些日常琐事和学习笔记，顺便玩玩Hexo，万一以后没钱买服务器了呢。本站托管于GitHub，由于不想被收录，所以就没设置域名。</p>
 <h2 id="QQ音乐歌单"><a href="#QQ音乐歌单" class="headerlink" title="QQ音乐歌单"></a>QQ音乐歌单</h2>
-			<script>
-				console.error("ReferenceError: value is not defined");
-			</script>
+    <div id="aplayer-qbqOieXK" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="3864741623" data-server="tencent" data-type="playlist" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86" data-order="random"></div>
 <h2 id="网易云音乐歌单"><a href="#网易云音乐歌单" class="headerlink" title="网易云音乐歌单"></a>网易云音乐歌单</h2>
-			<script>
-				console.error("ReferenceError: value is not defined");
-			</script>
+    <div id="aplayer-FIkJaguA" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="605442598" data-server="netease" data-type="playlist" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86" data-order="random"></div>
 </div>
 
         </div>
@@ -205,6 +204,30 @@
 
 
 
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'true' == 'true',
+            verify: 'false' == 'true',
+            appId: "dBRwnvCHvLzuWILw1WulaMRc-gzGzoHsz",
+            appKey: "2PyB8U5Yq2E49WRROgTcTQPK",
+            avatar: "mm",
+            placeholder: "还没有评论，快来抢沙发吧！",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
 
 
 
