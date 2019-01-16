@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>CSS 选择器 | 笔记</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="CSS">
+    <meta name="description" content="选择器 例子 例子描述 CSS     .class .intro 选择 class=”intro” 的所有元素。 1   #id #firstname 选择 id=”firstname” 的所有元素。 1   * * 选择所有元素。 2   element p 选择所有  元素。 1   element,element div,p 选择所有  元素和所有  元素。 1   element">
+<meta name="keywords" content="CSS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS 选择器">
+<meta property="og:url" content="https://geekcj12.github.io/2019/01/16/css-selector/index.html">
+<meta property="og:site_name" content="笔记">
+<meta property="og:description" content="选择器 例子 例子描述 CSS     .class .intro 选择 class=”intro” 的所有元素。 1   #id #firstname 选择 id=”firstname” 的所有元素。 1   * * 选择所有元素。 2   element p 选择所有  元素。 1   element,element div,p 选择所有  元素和所有  元素。 1   element">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-01-16T05:50:55.857Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CSS 选择器">
+<meta name="twitter:description" content="选择器 例子 例子描述 CSS     .class .intro 选择 class=”intro” 的所有元素。 1   #id #firstname 选择 id=”firstname” 的所有元素。 1   * * 选择所有元素。 2   element p 选择所有  元素。 1   element,element div,p 选择所有  元素和所有  元素。 1   element">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="https://secure.gravatar.com/avatar/7400af4725430d4029381e34d0bfcdff?s=256">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">闲淡酱</h5>
+          <a href="mailto:geekcj@geekcj.com" title="geekcj@geekcj.com" class="mail">geekcj@geekcj.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-link"></i>
+                关于
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/geekcj12" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://weibo.com/u/6006370066" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/geekcj12" target="_blank" >
+                <i class="icon icon-lg icon-twitter"></i>
+                Twitter
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://t.me/geekcj12" target="_blank" >
+                <i class="icon icon-lg icon-telegram"></i>
+                Telegram
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">CSS 选择器</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">CSS 选择器</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-01-16T05:34:55.000Z" itemprop="datePublished" class="page-time">
+  2019-01-16
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/代码/">代码</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+
+<article id="post-css-selector"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">CSS 选择器</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-01-16 13:34:55" datetime="2019-01-16T05:34:55.000Z"  itemprop="datePublished">2019-01-16</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/代码/">代码</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <table>
+<thead>
+<tr>
+<th>选择器</th>
+<th>例子</th>
+<th>例子描述</th>
+<th>CSS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="http://www.w3school.com.cn/cssref/selector_class.asp" target="_blank" rel="noopener">.<em>class</em></a></td>
+<td>.intro</td>
+<td>选择 class=”intro” 的所有元素。</td>
+<td>1</td>
+</tr>
+<tr>
+<td><a href="http://www.w3school.com.cn/cssref/selector_id.asp" target="_blank" rel="noopener">#<em>id</em></a></td>
+<td>#firstname</td>
+<td>选择 id=”firstname” 的所有元素。</td>
+<td>1</td>
+</tr>
+<tr>
+<td><a href="http://www.w3school.com.cn/cssref/selector_all.asp" target="_blank" rel="noopener">*</a></td>
+<td>*</td>
+<td>选择所有元素。</td>
+<td>2</td>
+</tr>
+<tr>
+<td><a href="http://www.w3school.com.cn/cssref/selector_element.asp" target="_blank" rel="noopener"><em>element</em></a></td>
+<td>p</td>
+<td>选择所有 <p> 元素。</p></td>
+<td>1</td>
+</tr>
+<tr>
+<td><a href="http://www.w3school.com.cn/cssref/selector_element_comma.asp" target="_blank" rel="noopener"><em>element</em>,<em>element</em></a></td>
+<td>div,p</td>
+<td>选择所有 <div> 元素和所有 <p> 元素。</p></div></td>
+<td>1</td>
+</tr>
+<tr>
+<td><a href="http://www.w3school.com.cn/cssref/selector_element_element.asp" target="_blank" rel="noopener"><em>element</em> <em>element</em></a></td>
+<td>div p</td>
+<td>选择 <div> 元素内部的所有 <p> 元素。</p></div></td>
+<td>1</td>
+</tr>
+<tr>
+<td><a href="http://www.w3school.com.cn/cssref/selector_element_gt.asp" target="_blank" rel="noopener"><em>element</em>&gt;<em>element</em></a></td>
+<td>div&gt;p</td>
+<td>选择父元素为 <div> 元素的所有 <p> 元素。</p></div></td>
+<td>2</td>
+</tr>
+<tr>
+<td><a href="http://www.w3school.com.cn/cssref/selector_element_plus.asp" target="_blank" rel="noopener"><em>element</em>+<em>element</em></a></td>
+<td>div+p</td>
+<td>选择紧接在 <div> 元素之后的所有 <p> 元素。</p></div></td>
+<td>2</td>
+</tr>
+<tr>
+<td><a href="http://www.w3school.com.cn/cssref/selector_attribute.asp" target="_blank" rel="noopener">[<em>attribute</em>]</a></td>
+<td>[target]</td>
+<td>选择带有 target 属性所有元素。</td>
+<td>2</td>
+</tr>
+<tr>
+<td><a href="http://www.w3school.com.cn/cssref/selector_attribute_value.asp" target="_blank" rel="noopener">[<em>attribute</em>=<em>value</em>]</a></td>
+<td>[target=_blank]</td>
+<td>选择 target=”_blank” 的所有元素。</td>
+<td>2</td>
+</tr>
+<tr>
+<td><a href="http://www.w3school.com.cn/cssref/selector_attribute_value_contain.asp" target="_blank" rel="noopener">[<em>attribute</em>~=<em>value</em>]</a></td>
+<td>[title~=flower]</td>
+<td>选择 title 属性包含单词 “flower” 的所有元素。</td>
+<td>2</td>
+</tr>
+<tr>
+<td>[[<em>attribute</em>\</td>
+<td>=<em>value</em>]](<a href="http://www.w3school.com.cn/cssref/selector_attribute_value_start.asp" target="_blank" rel="noopener">http://www.w3school.com.cn/cssref/selector_attribute_value_start.asp</a>)</td>
+<td>[lang\</td>
+<td>=en]</td>
+<td>选择 lang 属性值以 “en” 开头的所有元素。</td>
+<td>2</td>
+</tr>
+<tr>
+<td><a href="http://www.w3school.com.cn/cssref/selector_link.asp" target="_blank" rel="noopener">:link</a></td>
+<td>a:link</td>
+<td>选择所有未被访问的链接。</td>
+<td>1</td>
+</tr>
+<tr>
+<td><a href="http://www.w3school.com.cn/cssref/selector_visited.asp" target="_blank" rel="noopener">:visited</a></td>
+<td>a:visited</td>
+<td>选择所有已被访问的链接。</td>
+<td>1</td>
+</tr>
+<tr>
+<td><a href="http://www.w3school.com.cn/cssref/selector_active.asp" target="_blank" rel="noopener">:active</a></td>
+<td>a:active</td>
+<td>选择活动链接。</td>
+<td>1</td>
+</tr>
+<tr>
+<td><a href="http://www.w3school.com.cn/cssref/selector_hover.asp" target="_blank" rel="noopener">:hover</a></td>
+<td>a:hover</td>
+<td>选择鼠标指针位于其上的链接。</td>
+<td>1</td>
+</tr>
+<tr>
+<td><a href="http://www.w3school.com.cn/cssref/selector_focus.asp" target="_blank" rel="noopener">:focus</a></td>
+<td>input:focus</td>
+<td>选择获得焦点的 input 元素。</td>
+<td>2</td>
+</tr>
+<tr>
+<td><a href="http://www.w3school.com.cn/cssref/selector_first-letter.asp" target="_blank" rel="noopener">:first-letter</a></td>
+<td>p:first-letter</td>
+<td>选择每个 <p> 元素的首字母。</p></td>
+<td>1</td>
+</tr>
+<tr>
+<td><a href="http://www.w3school.com.cn/cssref/selector_first-line.asp" target="_blank" rel="noopener">:first-line</a></td>
+<td>p:first-line</td>
+<td>选择每个 <p> 元素的首行。</p></td>
+<td>1</td>
+</tr>
+<tr>
+<td><a href="http://www.w3school.com.cn/cssref/selector_first-child.asp" target="_blank" rel="noopener">:first-child</a></td>
+<td>p:first-child</td>
+<td>选择属于父元素的第一个子元素的每个 <p> 元素。</p></td>
+<td>2</td>
+</tr>
+<tr>
+<td><a href="http://www.w3school.com.cn/cssref/selector_before.asp" target="_blank" rel="noopener">:before</a></td>
+<td>p:before</td>
+<td>在每个 <p> 元素的内容之前插入内容。</p></td>
+<td>2</td>
+</tr>
+<tr>
+<td><a href="http://www.w3school.com.cn/cssref/selector_after.asp" target="_blank" rel="noopener">:after</a></td>
+<td>p:after</td>
+<td>在每个 <p> 元素的内容之后插入内容。</p></td>
+<td>2</td>
+</tr>
+<tr>
+<td><a href="http://www.w3school.com.cn/cssref/selector_lang.asp" target="_blank" rel="noopener">:lang(<em>language</em>)</a></td>
+<td>p:lang(it)</td>
+<td>选择带有以 “it” 开头的 lang 属性值的每个 <p> 元素。</p></td>
+<td>2</td>
+</tr>
+<tr>
+<td><a href="http://www.w3school.com.cn/cssref/selector_gen_sibling.asp" target="_blank" rel="noopener"><em>element1</em>~<em>element2</em></a></td>
+<td>p~ul</td>
+<td>选择前面有 <p> 元素的每个 <ul> 元素。</ul></p></td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="http://www.w3school.com.cn/cssref/selector_attr_begin.asp" target="_blank" rel="noopener">[<em>attribute</em>^=<em>value</em>]</a></td>
+<td>a[src^=”https”]</td>
+<td>选择其 src 属性值以 “https” 开头的每个 <a> 元素。</a></td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="http://www.w3school.com.cn/cssref/selector_attr_end.asp" target="_blank" rel="noopener">[<em>attribute</em>$=<em>value</em>]</a></td>
+<td>a[src$=”.pdf”]</td>
+<td>选择其 src 属性以 “.pdf” 结尾的所有 <a> 元素。</a></td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="http://www.w3school.com.cn/cssref/selector_attr_contain.asp" target="_blank" rel="noopener">[<em>attribute**=</em>value*]</a></td>
+<td>a[src*=”abc”]</td>
+<td>选择其 src 属性中包含 “abc” 子串的每个 <a> 元素。</a></td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="http://www.w3school.com.cn/cssref/selector_first-of-type.asp" target="_blank" rel="noopener">:first-of-type</a></td>
+<td>p:first-of-type</td>
+<td>选择属于其父元素的首个 <p> 元素的每个 </p><p> 元素。</p></td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="http://www.w3school.com.cn/cssref/selector_last-of-type.asp" target="_blank" rel="noopener">:last-of-type</a></td>
+<td>p:last-of-type</td>
+<td>选择属于其父元素的最后 <p> 元素的每个 </p><p> 元素。</p></td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="http://www.w3school.com.cn/cssref/selector_only-of-type.asp" target="_blank" rel="noopener">:only-of-type</a></td>
+<td>p:only-of-type</td>
+<td>选择属于其父元素唯一的 <p> 元素的每个 </p><p> 元素。</p></td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="http://www.w3school.com.cn/cssref/selector_only-child.asp" target="_blank" rel="noopener">:only-child</a></td>
+<td>p:only-child</td>
+<td>选择属于其父元素的唯一子元素的每个 <p> 元素。</p></td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="http://www.w3school.com.cn/cssref/selector_nth-child.asp" target="_blank" rel="noopener">:nth-child(<em>n</em>)</a></td>
+<td>p:nth-child(2)</td>
+<td>选择属于其父元素的第二个子元素的每个 <p> 元素。</p></td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="http://www.w3school.com.cn/cssref/selector_nth-last-child.asp" target="_blank" rel="noopener">:nth-last-child(<em>n</em>)</a></td>
+<td>p:nth-last-child(2)</td>
+<td>同上，从最后一个子元素开始计数。</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="http://www.w3school.com.cn/cssref/selector_nth-of-type.asp" target="_blank" rel="noopener">:nth-of-type(<em>n</em>)</a></td>
+<td>p:nth-of-type(2)</td>
+<td>选择属于其父元素第二个 <p> 元素的每个 </p><p> 元素。</p></td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="http://www.w3school.com.cn/cssref/selector_nth-last-of-type.asp" target="_blank" rel="noopener">:nth-last-of-type(<em>n</em>)</a></td>
+<td>p:nth-last-of-type(2)</td>
+<td>同上，但是从最后一个子元素开始计数。</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="http://www.w3school.com.cn/cssref/selector_last-child.asp" target="_blank" rel="noopener">:last-child</a></td>
+<td>p:last-child</td>
+<td>选择属于其父元素最后一个子元素每个 <p> 元素。</p></td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="http://www.w3school.com.cn/cssref/selector_root.asp" target="_blank" rel="noopener">:root</a></td>
+<td>:root</td>
+<td>选择文档的根元素。</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="http://www.w3school.com.cn/cssref/selector_empty.asp" target="_blank" rel="noopener">:empty</a></td>
+<td>p:empty</td>
+<td>选择没有子元素的每个 <p> 元素（包括文本节点）。</p></td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="http://www.w3school.com.cn/cssref/selector_target.asp" target="_blank" rel="noopener">:target</a></td>
+<td>#news:target</td>
+<td>选择当前活动的 #news 元素。</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="http://www.w3school.com.cn/cssref/selector_enabled.asp" target="_blank" rel="noopener">:enabled</a></td>
+<td>input:enabled</td>
+<td>选择每个启用的 <input> 元素。</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="http://www.w3school.com.cn/cssref/selector_disabled.asp" target="_blank" rel="noopener">:disabled</a></td>
+<td>input:disabled</td>
+<td>选择每个禁用的 <input> 元素</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="http://www.w3school.com.cn/cssref/selector_checked.asp" target="_blank" rel="noopener">:checked</a></td>
+<td>input:checked</td>
+<td>选择每个被选中的 <input> 元素。</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="http://www.w3school.com.cn/cssref/selector_not.asp" target="_blank" rel="noopener">:not(<em>selector</em>)</a></td>
+<td>:not(p)</td>
+<td>选择非 <p> 元素的每个元素。</p></td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="http://www.w3school.com.cn/cssref/selector_selection.asp" target="_blank" rel="noopener">::selection</a></td>
+<td>::selection</td>
+<td>选择被用户选取的元素部分。</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+
+        
+        <a href="/2019/01/16/css-selector/" target="_blank" rel="external">https://geekcj12.github.io/2019/01/16/css-selector/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://geekcj12.github.io">
+            <img src="https://secure.gravatar.com/avatar/7400af4725430d4029381e34d0bfcdff?s=256" alt="闲淡酱">
+            闲淡酱
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://geekcj12.github.io/2019/01/16/css-selector/&title=《CSS 选择器》 — 笔记&pic=https://secure.gravatar.com/avatar/7400af4725430d4029381e34d0bfcdff?s=256" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://geekcj12.github.io/2019/01/16/css-selector/&title=《CSS 选择器》 — 笔记&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://geekcj12.github.io/2019/01/16/css-selector/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《CSS 选择器》 — 笔记&url=https://geekcj12.github.io/2019/01/16/css-selector/&via=https://geekcj12.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://geekcj12.github.io/2019/01/16/css-selector/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/10/27/centos-swap/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">在CentOS 7上添加Swap交换空间</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'true' == 'true',
+            verify: 'false' == 'true',
+            appId: "dBRwnvCHvLzuWILw1WulaMRc-gzGzoHsz",
+            appKey: "2PyB8U5Yq2E49WRROgTcTQPK",
+            avatar: "mm",
+            placeholder: "快来说两句吧",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>闲淡酱 &copy; 2016 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://geekcj12.github.io/2019/01/16/css-selector/&title=《CSS 选择器》 — 笔记&pic=https://secure.gravatar.com/avatar/7400af4725430d4029381e34d0bfcdff?s=256" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://geekcj12.github.io/2019/01/16/css-selector/&title=《CSS 选择器》 — 笔记&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://geekcj12.github.io/2019/01/16/css-selector/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《CSS 选择器》 — 笔记&url=https://geekcj12.github.io/2019/01/16/css-selector/&via=https://geekcj12.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://geekcj12.github.io/2019/01/16/css-selector/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://geekcj12.github.io/2019/01/16/css-selector/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>
