@@ -4,6 +4,56 @@
   
     
     <entry>
+      <title>Vue.js使用Ajax</title>
+      <link href="/2019/03/30/vue-axios/"/>
+      <url>/2019/03/30/vue-axios/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>在原生的Vue.js中，默认是不支持的Ajax的。但是，在某些情况下又不得不用。为了让Vue能够支持异步请求API，可以使用axios库来实现。</p><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>切换到Vue项目目录下，使用npm来安装插件。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install --save --save-exact axios vue-axios</span><br></pre></td></tr></table></figure><p>打开main.js，注册组件</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import axios from &apos;axios&apos;</span><br><span class="line">import VueAxios from &apos;vue-axios&apos;</span><br><span class="line"></span><br><span class="line">Vue.use(VueAxios, axios)</span><br></pre></td></tr></table></figure><h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>通过使用GitHub的API接口，来实现一个简单的用户搜索功能。当用户输入用户名后进行提交，在页面不刷新的前提下，异步请求API更新页面内容。</p><blockquote><p>推荐使用vscode来开发，安装<strong>Veutr</strong>插件，提高开发效率。</p></blockquote><p>新建一个component</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div class=&quot;github&quot;&gt;</span><br><span class="line">    &lt;form @submit.prevent=&quot;find()&quot;&gt;</span><br><span class="line">      &lt;input type=&quot;text&quot; v-model=&quot;username&quot;&gt;</span><br><span class="line">      &lt;button type=&quot;submit&quot;&gt;搜索&lt;/button&gt;</span><br><span class="line">    &lt;/form&gt;</span><br><span class="line">    &lt;div class=&quot;user-info&quot; v-if=&quot;content&quot;&gt;</span><br><span class="line">      &lt;img :src=&quot;content.avatar_url&quot; alt=&quot;avatar&quot; class=&quot;avatar&quot;&gt;</span><br><span class="line">      &lt;p&gt;&#123;&#123; content.name &#125;&#125;&lt;/p&gt;</span><br><span class="line">      &lt;p&gt;&#123;&#123; content.location &#125;&#125;&lt;/p&gt;</span><br><span class="line">      &lt;p&gt;&#123;&#123; content.bio&#125;&#125;&lt;/p&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">  name: &quot;github&quot;,</span><br><span class="line">  data: function() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      username: &quot;&quot;,</span><br><span class="line">      content: &quot;&quot;</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    find() &#123;</span><br><span class="line">      this.axios</span><br><span class="line">        .get(&quot;https://api.github.com/users/&quot; + this.username)</span><br><span class="line">        .then(response =&gt; &#123;</span><br><span class="line">          this.content = response.data;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style&gt;</span><br><span class="line">img.avatar &#123;</span><br><span class="line">  width: 5em;</span><br><span class="line">  height: 5em;</span><br><span class="line">  border-radius: 50%;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 代码 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> JavaScript </tag>
+            
+            <tag> vue.js </tag>
+            
+            <tag> axios </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Vue CLI部署</title>
+      <link href="/2019/03/30/vue-cli/"/>
+      <url>/2019/03/30/vue-cli/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>之前学习Vue.js的时候，一直都是直接在HTML里引入script。在正儿八经的项目开发中，就需要用Vue CLI来生成环境。Vue CLI就像一个脚手架，生成好一个环境，最后通过webpack把你写的template进行封装打包。</p><p>Web开发经历了20多年的发展，不再是写写HTML，CSS，或者切切图的事。组件化开发成为了现在的主流，便于前端工程师们后期进行修改和维护。</p><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>需要先安装好Node.js环境，此处省略。</p><p>切换到项目目录，全局安装Vue CLI</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install -g vue-cli</span><br></pre></td></tr></table></figure><p>创建应用。不需要对Webpack有太多的了解，这一切Vue CLI都会帮我们完成。<strong>app</strong>是自定义的项目名称。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vue init webpack app</span><br></pre></td></tr></table></figure><ul><li>首先会询问项目名，描述，作者三项，直接回车即可</li><li>接着有一个 vue build 选项，直接回车即可</li><li>然后会问要不要安装 vue-router，开发单页应用基本离不开路由，推荐选择安装</li><li>最后是语法检查，单元测试，项目测试三项直接输入 n </li></ul><p>部署完成后，根据提示把命令敲一遍，然后即可通过localhost:8080访问你的应用。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd app</span><br><span class="line">npm run dev</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> JavaScript </tag>
+            
+            <tag> vue.js </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>CSS 选择器</title>
       <link href="/2019/01/16/css-selector/"/>
       <url>/2019/01/16/css-selector/</url>
@@ -81,7 +131,7 @@
       <link href="/2018/10/06/kounodori-music/"/>
       <url>/2018/10/06/kounodori-music/</url>
       
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h2 id="第一季"><a href="#第一季" class="headerlink" title="第一季"></a>第一季</h2>    <div id="aplayer-rSnIaShv" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="001fMadP3xUDoG" data-server="tencent" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"></div>    <div id="aplayer-kaqmhvYo" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="002zZZu848JulC" data-server="tencent" data-type="album" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"></div><h2 id="第二季"><a href="#第二季" class="headerlink" title="第二季"></a>第二季</h2>    <div id="aplayer-QSFMYxyO" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="001tp7l31V9YH9" data-server="tencent" data-type="album" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"></div>    <div id="aplayer-LpvTEPkp" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="002NT5wM1oKfpd" data-server="tencent" data-type="album" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"></div>]]></content>
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h2 id="第一季"><a href="#第一季" class="headerlink" title="第一季"></a>第一季</h2>    <div id="aplayer-kPgPxBpK" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="001fMadP3xUDoG" data-server="tencent" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"></div>    <div id="aplayer-VFchvtZt" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="002zZZu848JulC" data-server="tencent" data-type="album" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"></div><h2 id="第二季"><a href="#第二季" class="headerlink" title="第二季"></a>第二季</h2>    <div id="aplayer-INDieqVk" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="001tp7l31V9YH9" data-server="tencent" data-type="album" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"></div>    <div id="aplayer-kuIvbyOO" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="002NT5wM1oKfpd" data-server="tencent" data-type="album" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"></div>]]></content>
       
       
       <categories>
