@@ -1,13 +1,204 @@
-<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="Less预处理器"><meta name="keywords" content="less"><meta name="author" content="闲淡酱"><meta name="copyright" content="闲淡酱"><title>Less预处理器 | 笔记</title><link rel="shortcut icon" href="/melody-favicon.ico"><link rel="stylesheet" href="/css/index.css?version=1.6.1"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.6.1"><link rel="dns-prefetch" href="https://cdn.staticfile.org"><link rel="dns-prefetch" href="https://cdn.bootcss.com"><link rel="dns-prefetch" href="https://creativecommons.org"><script>var GLOBAL_CONFIG = { 
-  root: '/',
-  algolia: undefined,
-  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容:${query}"}},
-  copy: {
-    success: '复制成功',
-    error: '复制错误',
-    noSupport: '浏览器不支持'
-  }
-} </script></head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar"><div class="toggle-sidebar-info text-center"><span data-toggle="切换文章详情">切换站点概览</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#在命令行下使用"><span class="toc-number">1.</span> <span class="toc-text">在命令行下使用</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#LESS-语法"><span class="toc-number">2.</span> <span class="toc-text">LESS 语法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#变量"><span class="toc-number">2.1.</span> <span class="toc-text">变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#混合"><span class="toc-number">2.2.</span> <span class="toc-text">混合</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#带参数混合"><span class="toc-number">2.3.</span> <span class="toc-text">带参数混合</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#arguments-变量"><span class="toc-number">2.3.1.</span> <span class="toc-text">@arguments 变量</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#模式匹配和导引表达式"><span class="toc-number">2.4.</span> <span class="toc-text">模式匹配和导引表达式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#引导"><span class="toc-number">2.4.1.</span> <span class="toc-text">引导</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#嵌套规则"><span class="toc-number">2.5.</span> <span class="toc-text">嵌套规则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#运算"><span class="toc-number">2.6.</span> <span class="toc-text">运算</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Color-函数"><span class="toc-number">2.7.</span> <span class="toc-text">Color 函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Math-函数"><span class="toc-number">2.8.</span> <span class="toc-text">Math 函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#命名空间"><span class="toc-number">2.9.</span> <span class="toc-text">命名空间</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#作用域"><span class="toc-number">2.10.</span> <span class="toc-text">作用域</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注释"><span class="toc-number">2.11.</span> <span class="toc-text">注释</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Importing"><span class="toc-number">2.12.</span> <span class="toc-text">Importing</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#字符串插值"><span class="toc-number">2.13.</span> <span class="toc-text">字符串插值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#避免编译"><span class="toc-number">2.14.</span> <span class="toc-text">避免编译</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JavaScript-表达式"><span class="toc-number">2.15.</span> <span class="toc-text">JavaScript 表达式</span></a></li></ol></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="https://secure.gravatar.com/avatar/7400af4725430d4029381e34d0bfcdff?s=256&amp;r=G&amp;d=mm"></div><div class="author-info__name text-center">闲淡酱</div><div class="author-info__description text-center"></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">文章</span><span class="pull-right">8</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">标签</span><span class="pull-right">9</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">分类</span><span class="pull-right">2</span></a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(/bg.jpg)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">笔记</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus"><a class="site-page social-icon search"><i class="fa fa-search"></i><span> 搜索</span></a><a class="site-page" href="/">首页</a><a class="site-page" href="/archives">归档</a><a class="site-page" href="/tags">标签</a><a class="site-page" href="/categories">分类</a><a class="site-page" href="/about">关于</a></span></div><div id="post-info"><div id="post-title">Less预处理器</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2019-04-02</time><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/代码/">代码</a></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><h1 id="在命令行下使用"><a href="#在命令行下使用" class="headerlink" title="在命令行下使用"></a>在命令行下使用</h1><p>你可以在终端调用 LESS 解析器:</p>
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>Less预处理器 | 笔记</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="less">
+    <meta name="description" content="在命令行下使用你可以在终端调用 LESS 解析器: 1$ lessc styles.less 上面的命令会将编译后的 CSS 传递给 stdout, 你可以将它保存到一个文件中: 1$ lessc styles.less &amp;gt; styles.css 如何你想将编译后的 CSS 压缩掉，那么加一个 -x 参数就可以了。 LESS 语法LESS 做为 CSS 的一种形式的扩展，它并没有阉割 CSS">
+<meta name="keywords" content="less">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Less预处理器">
+<meta property="og:url" content="https://copy.moe/2019/04/02/less/index.html">
+<meta property="og:site_name" content="笔记">
+<meta property="og:description" content="在命令行下使用你可以在终端调用 LESS 解析器: 1$ lessc styles.less 上面的命令会将编译后的 CSS 传递给 stdout, 你可以将它保存到一个文件中: 1$ lessc styles.less &amp;gt; styles.css 如何你想将编译后的 CSS 压缩掉，那么加一个 -x 参数就可以了。 LESS 语法LESS 做为 CSS 的一种形式的扩展，它并没有阉割 CSS">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-04-04T14:59:55.350Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Less预处理器">
+<meta name="twitter:description" content="在命令行下使用你可以在终端调用 LESS 解析器: 1$ lessc styles.less 上面的命令会将编译后的 CSS 传递给 stdout, 你可以将它保存到一个文件中: 1$ lessc styles.less &amp;gt; styles.css 如何你想将编译后的 CSS 压缩掉，那么加一个 -x 参数就可以了。 LESS 语法LESS 做为 CSS 的一种形式的扩展，它并没有阉割 CSS">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="https://secure.gravatar.com/avatar/7400af4725430d4029381e34d0bfcdff?s=256">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">闲淡酱</h5>
+          <a href="mailto:geekcj@geekcj.com" title="geekcj@geekcj.com" class="mail">geekcj@geekcj.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/geekcj12" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://weibo.com/u/6006370066" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-link"></i>
+                关于
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Less预处理器</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Less预处理器</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-04-02T14:26:13.000Z" itemprop="datePublished" class="page-time">
+  2019-04-02
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/代码/">代码</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#在命令行下使用"><span class="post-toc-number">1.</span> <span class="post-toc-text">在命令行下使用</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#LESS-语法"><span class="post-toc-number">2.</span> <span class="post-toc-text">LESS 语法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#变量"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">变量</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#混合"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">混合</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#带参数混合"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">带参数混合</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#arguments-变量"><span class="post-toc-number">2.3.1.</span> <span class="post-toc-text">@arguments 变量</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#模式匹配和导引表达式"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">模式匹配和导引表达式</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#引导"><span class="post-toc-number">2.4.1.</span> <span class="post-toc-text">引导</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#嵌套规则"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">嵌套规则</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#运算"><span class="post-toc-number">2.6.</span> <span class="post-toc-text">运算</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Color-函数"><span class="post-toc-number">2.7.</span> <span class="post-toc-text">Color 函数</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Math-函数"><span class="post-toc-number">2.8.</span> <span class="post-toc-text">Math 函数</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#命名空间"><span class="post-toc-number">2.9.</span> <span class="post-toc-text">命名空间</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#作用域"><span class="post-toc-number">2.10.</span> <span class="post-toc-text">作用域</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#注释"><span class="post-toc-number">2.11.</span> <span class="post-toc-text">注释</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Importing"><span class="post-toc-number">2.12.</span> <span class="post-toc-text">Importing</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#字符串插值"><span class="post-toc-number">2.13.</span> <span class="post-toc-text">字符串插值</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#避免编译"><span class="post-toc-number">2.14.</span> <span class="post-toc-text">避免编译</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#JavaScript-表达式"><span class="post-toc-number">2.15.</span> <span class="post-toc-text">JavaScript 表达式</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-less"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Less预处理器</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-04-02 22:26:13" datetime="2019-04-02T14:26:13.000Z"  itemprop="datePublished">2019-04-02</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/代码/">代码</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="在命令行下使用"><a href="#在命令行下使用" class="headerlink" title="在命令行下使用"></a>在命令行下使用</h1><p>你可以在终端调用 LESS 解析器:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ lessc styles.less</span><br></pre></td></tr></table></figure>
 <p>上面的命令会将编译后的 CSS 传递给 <code>stdout</code>, 你可以将它保存到一个文件中:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ lessc styles.less &gt; styles.css</span><br></pre></td></tr></table></figure>
@@ -168,26 +359,278 @@
 <p>它也可以访问JavaScript环境:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@height: `document.body.clientHeight`;</span><br></pre></td></tr></table></figure>
 <p>如果你想将一个JavaScript字符串解析成16进制的颜色值, 你可以使用 <code>color</code> 函数:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@color: color(`window.colors.baseColor`);</span><br><span class="line">@darkcolor: darken(@color, 10%);</span><br></pre></td></tr></table></figure></div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">闲淡酱</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://copy.moe/2019/04/02/less/">https://copy.moe/2019/04/02/less/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://copy.moe">笔记</a>！</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/less/">less</a></div><nav id="pagination"><div class="prev-post pull-left"><a href="/2019/04/04/git/"><i class="fa fa-chevron-left">  </i><span>Git基本使用</span></a></div><div class="next-post pull-right"><a href="/2019/03/30/vue-axios/"><span>Vue.js使用axios</span><i class="fa fa-chevron-right"></i></a></div></nav><div id="vcomment"></div><script src="https://cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js"></script><script>var notify = 'false' == true ? true : false;
-var verify = 'true' == true ? true : false;
-var GUEST_INFO = ['nick','mail','link'];
-var guest_info = 'nick,mail,link'.split(',').filter(function(item){
-  return GUEST_INFO.indexOf(item) > -1
-});
-guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
-window.valine = new Valine({
-  el:'#vcomment',
-  notify:notify,
-  verify:verify,
-  appId:'dBRwnvCHvLzuWILw1WulaMRc-gzGzoHsz',
-  appKey:'2PyB8U5Yq2E49WRROgTcTQPK',
-  placeholder:'来说两句吧',
-  avatar:'mm',
-  guest_info:guest_info,
-  pageSize:'10',
-  lang: 'zh-cn'
-})</script></div></div><footer class="footer-bg" style="background-image: url(/bg.jpg)"><div class="layout" id="footer"><div class="copyright">&copy;2018 - 2019 By 闲淡酱</div><div class="framework-info"><span>驱动 - </span><a href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file-o"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.6.1"></script><script src="/js/fancybox.js?version=1.6.1"></script><script src="/js/sidebar.js?version=1.6.1"></script><script src="/js/copy.js?version=1.6.1"></script><script src="/js/fireworks.js?version=1.6.1"></script><script src="/js/transition.js?version=1.6.1"></script><script src="/js/scroll.js?version=1.6.1"></script><script src="/js/head.js?version=1.6.1"></script><script src="/js/search/local-search.js"></script><script>if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
-  $('#nav').addClass('is-mobile')
-  $('footer').addClass('is-mobile')
-}</script><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章"></div></div></div><hr><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a href="https://github.com/wzpan/hexo-generator-search" style="color:#49B1F5;">hexo-generator-search</a>
- <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fa fa-times"></i></span></div><div class="search-mask"></div></body></html>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@color: color(`window.colors.baseColor`);</span><br><span class="line">@darkcolor: darken(@color, 10%);</span><br></pre></td></tr></table></figure>
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+
+        
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2019/04/02/less/" target="_blank" rel="external">https://copy.moe/2019/04/02/less/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://copy.moe">
+            <img src="https://secure.gravatar.com/avatar/7400af4725430d4029381e34d0bfcdff?s=256" alt="闲淡酱">
+            闲淡酱
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/less/">less</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://copy.moe/2019/04/02/less/&title=《Less预处理器》 — 笔记&pic=https://secure.gravatar.com/avatar/7400af4725430d4029381e34d0bfcdff?s=256" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://copy.moe/2019/04/02/less/&title=《Less预处理器》 — 笔记&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://copy.moe/2019/04/02/less/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Less预处理器》 — 笔记&url=https://copy.moe/2019/04/02/less/&via=https://copy.moe" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://copy.moe/2019/04/02/less/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/04/04/git/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Git基本使用</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/03/30/vue-axios/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Vue.js使用axios</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "dBRwnvCHvLzuWILw1WulaMRc-gzGzoHsz",
+            appKey: "2PyB8U5Yq2E49WRROgTcTQPK",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>闲淡酱 &copy; 2018 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://copy.moe/2019/04/02/less/&title=《Less预处理器》 — 笔记&pic=https://secure.gravatar.com/avatar/7400af4725430d4029381e34d0bfcdff?s=256" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://copy.moe/2019/04/02/less/&title=《Less预处理器》 — 笔记&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://copy.moe/2019/04/02/less/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Less预处理器》 — 笔记&url=https://copy.moe/2019/04/02/less/&via=https://copy.moe" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://copy.moe/2019/04/02/less/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABwklEQVR42u3aQY7DMAgF0N7/0p3tSKOkH0iYVHpeRVVqP2eBDPj1isf716i+8/f3ZLbRwMXFHXPfp+N8yd48R8/n/8XFxd3nHkWMZOrk/Xz+DzZcXNwHc/NtJIchXFzcb+dO8hRcXNzv4vaSlmQz+ZwX52q4uLgDbh6S7nu+pb6Li4vb4r6LIw9bSROlvDouLu4KNw8oSQO1d/Qpr4uLi3szt3pVIg9S+YGpUHjFxcVd4VanqJYzJkXS8iUMXFzci7j5AvPrF8lh6MNsuLi4i9y8WTIqZ8RFkyj5wcXFvZmbH26q7ZBJyfUwV8PFxV3h9pKfXhGkuoEo7uLi4l7KTQqd1cJoksaMCii4uLgr3GryM9nSKPnBxcV9DLfXZE1CVfV6KC4u7iY3Dx/V5kqh5JEHRFxc3HVu71BS3UDvc+Di4v4XNy90VsslyeEmegcXF/dmbu8iRd4CSVh5SwYXF3eHm4/qBaxkA80mKy4u7gp3ErzmZdN8Blxc3H1urwNTbZDMQx4uLu7zuUloqx6bXtXd4OLiPoDbK5FMCh+jQIaLizvgTtokSUs1T5w+fAhcXNwVbjmUnG4gwVVLMLi4uIvcH8OcAS8kwfeNAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>
