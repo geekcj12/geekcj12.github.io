@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     
 
     
@@ -20,7 +20,7 @@
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="">
+    <meta name="keywords" content>
     <meta property="og:type" content="website">
 <meta property="og:title" content="笔记">
 <meta property="og:url" content="https://copy.moe/index.html">
@@ -158,6 +158,59 @@
 <div class="container body-wrap">
 
     <ul class="post-list">
+    
+        <li class="post-list-item fade">
+            <article id="post-blog-development-record-1"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2020-01-20 16:04:36" datetime="2020-01-20T08:04:36.000Z"  itemprop="datePublished">2020-01-20</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/代码/">代码</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2020/01/20/blog-development-record-1/">博客开发记录1 - 获取客户端IP</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        为了防止一些人搞事情，恶意刷评论或者发广告的一些现象，有必要记录下每条评论的IP下来。
+后端在控制器里用一行代码就可以获取IP了
+1ctx.request.ip
+然后设置下Koa里的代理
+1app.proxy = true
+服务端由于Node部署到线上后，要用Nginx把内网的端口反代到外网上，因为代理的原因，后端并不能直接获取到真实的客户端IP地址。
+博客前端用的Nuxt.js，设置了ax...
+    
+
+        <a href="/2020/01/20/blog-development-record-1/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Nginx/">Nginx</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
     
         <li class="post-list-item fade">
             <article id="post-git"
@@ -581,7 +634,7 @@ Qu...
         </p>
     </div>
     <div class="bottom">
-        <p><span>闲淡酱 &copy; 2018 - 2019</span>
+        <p><span>闲淡酱 &copy; 2018 - 2020</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
